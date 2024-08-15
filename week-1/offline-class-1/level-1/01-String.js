@@ -13,6 +13,7 @@ function getLength(str) {
 getLength("Hello World");
 
 // indexOf
+// returns the indeex of first occurence of the given string 
 function findIndexOf(str, target) {
   console.log("Original String:", str);
   console.log("Index:", str.indexOf(target));
@@ -20,6 +21,7 @@ function findIndexOf(str, target) {
 findIndexOf("Hello World", "World");
 
 // lastIndexOf
+// returns the index of the last occurence of the string 
 function findLastIndexOf(str, target) {
   console.log("Original String:", str);
   console.log("Index:", str.lastIndexOf(target));
