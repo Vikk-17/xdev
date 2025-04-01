@@ -11,10 +11,11 @@ let requestCount = 0;
 // requestCount variable
 
 function countRequest(req, res, next){
-  requestCount++;
-  console.log(requestCount);
-  next();
+    requestCount++;
+    console.log(requestCount);
+    next();
 }
+
 
 // If we want to use that above middleware globally
 // app.use(countRequest);
