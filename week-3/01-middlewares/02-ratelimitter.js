@@ -16,8 +16,20 @@ setInterval(() => {
     numberOfRequestsForUser = {};
 }, 1000)
 
+function rateLimiter(req, res, next){
+    let count = 0;
+    setInterval(() => {
+        if(res.statusCode == 200 ){ 
+            count ++;
+        }
+        else{
+            res.status(404).json({id:"1234567890", msg: "404 errro"});
+        }
+    }, 1000);
+    next();
+}
 
-//app.use();
+app.use(rateLimiter);
 
 app.get('/user', function(req, res) {
   res.status(200).json({ name: 'john' });
