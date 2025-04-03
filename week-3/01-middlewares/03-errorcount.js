@@ -25,14 +25,10 @@ app.get("/errorCount", function (req, res) {
 });
 
 app.use((err, req, res, next) => {
-  errorCount++;
-  console.log(errorCount);
-//  console.error(err.stack);
-  res.status(500).send('Something broke!')
+    errorCount += 1;
+    // console.error(err.stack);
+    res.status(404).send({})
 });
 
-app.listen(3000, ()=>{
-  console.log("Server is listening on 3000");
-});
 
-// module.exports = app;
+module.exports = app;
