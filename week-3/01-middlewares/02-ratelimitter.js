@@ -16,20 +16,25 @@ setInterval(() => {
     numberOfRequestsForUser = {};
 }, 1000)
 
-function rateLimiter(req, res, next){
-    let count = 0;
-    setInterval(() => {
-        if(res.statusCode == 200 ){ 
-            count ++;
+
+
+
+app.use((req, res, next) => {
+    const userID = req.headers['user-id']
+    if(numberOfRequestsForUser[userID]){
+        numberOfRequestsForUser[userID] += 1;
+        if(numberOfRequestsForUser[userID] > 5){
+            res.status(404).send("can't access");
         }
         else{
-            res.status(404).json({id:"1234567890", msg: "404 errro"});
+            next();
         }
-    }, 1000);
-    next();
-}
-
-app.use(rateLimiter);
+    }
+    else{
+        numberOfRequestsForUser[userID] = 1;
+        next();
+    }
+});
 
 app.get('/user', function(req, res) {
   res.status(200).json({ name: 'john' });
