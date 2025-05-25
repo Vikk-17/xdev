@@ -6,7 +6,11 @@ import { useState } from "react";
 export function Assignment1() {
     const [input, setInput] = useState(0);
     // Your solution starts here
-    const expensiveValue = 0; 
+    function factorial(value) {
+        if(value==0) return 1;
+        else return value * factorial(value-1);
+    }
+    const expensiveValue = factorial(input); 
     // Your solution ends here
 
     return (

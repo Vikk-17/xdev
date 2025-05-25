@@ -1,12 +1,12 @@
 import './App.css'
 
-// import {useState} from "react";
-import React from "react";
+import {useState} from "react";
+// import React from "react";
 
 function App(){
 
   // set the state of a button 
-  const [count, setCount] = React.useState(0);
+  const [count, setCount] = useState(0);
 
   // Render
   return (
