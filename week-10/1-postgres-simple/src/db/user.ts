@@ -24,6 +24,7 @@ export async function createUser(username: string, password: string, name: strin
     }
 }
 
+
 /*
  * Should return the User object
  * {
@@ -33,7 +34,7 @@ export async function createUser(username: string, password: string, name: strin
  * }
  */
 export async function getUser(userId: number) {
-     try{
+    try{
         await client.connect(); 
         const getQuery = "SELECT * FROM users WHERE user_id=$1;"
         const values = [userId];
